@@ -89,7 +89,7 @@ def show_weather_ui():
             return
 
         try:
-            api_key = "a36fa0d3564b48a9e41bedfcc9435be0"   # <-- Apna OpenWeather API key yaha daalna
+            api_key = "Your OpenWeather API Key"  
             url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
             res = requests.get(url)
             data = res.json()
@@ -172,7 +172,7 @@ def show_news_ui():
             return
 
         try:
-            api_key = "af1e033f6b2f46e2a2ec5e3f2d89b2d3"   # <-- Apna NewsAPI key yaha daalna
+            api_key = "Your NewsAPI key"
             if len(query) == 2:
                 url = f"https://newsapi.org/v2/top-headlines?country={query}&apiKey={api_key}"
             else:
@@ -185,7 +185,7 @@ def show_news_ui():
                 messagebox.showerror("Error", "Failed to fetch news")
                 return
 
-            articles = data["articles"][:5]  # Top 5 news
+            articles = data["articles"][:5]  # Top 5 news :5 you can change according to youself
 
             for i, article in enumerate(articles, start=1):
                 headline = article.get("title", "No Title")
@@ -195,7 +195,7 @@ def show_news_ui():
                 if desc:
                     news_box.insert(tk.END, f"   {desc}\n\n")
 
-                engine.say(headline)  # speak headlines
+                engine.say(headline)  # speak headlines or you can listen whole description jsut add (description)
 
             engine.runAndWait()
 
@@ -210,3 +210,4 @@ def show_news_ui():
 # Start with menu
 show_menu()
 root.mainloop()
+
